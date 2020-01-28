@@ -1,9 +1,9 @@
 #include <CapacitiveSensor.h>
 
-// 10 megohm resistor between pins 4 & 2, pin 2 is sensor pin, add wire, foil
+// 4.1MOhm resistor. Pin numbers set for Linkit 7688 Duo
 CapacitiveSensor touchSwitch = CapacitiveSensor(22,20);
 
-#define LED_PIN A5
+#define LED_PIN A5 //LED turns on indicating correct sensivitiy
 
 
 
@@ -15,21 +15,20 @@ void setup()
 
 void loop()
 {
+ //code form CapacitiveSensor Library.
  long start = millis();
  long val = touchSwitch.capacitiveSensor(30);
 
-//1500 toque do triangulo
-//3000 moeda
-// fechar a mao
+//val > 800 closed hand
+//turns LED on with closed hand holding triangle
 if (val > 800) {
 
- //Serial.print(val);
- digitalWrite(LED_PIN, HIGH);
- 
+    //for debug
+    //Serial.print(val);
+    digitalWrite(LED_PIN, HIGH);
  } else {
- 
- digitalWrite(LED_PIN, LOW);
- 
+    
+    digitalWrite(LED_PIN, LOW);
  }
  Serial.write(val);
 }
