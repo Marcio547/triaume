@@ -1,0 +1,86 @@
+#N canvas 1600 87 1920 944 12;
+#X msg 124 135 devices;
+#X text 44 30 Patch Created for PD Vanilla. Add import mrpeach object
+if using purr-data or pd-extended;
+#X obj 128 297 slipdec;
+#X obj 128 339 unpackOSC;
+#X floatatom 180 421 10 0 0 0 - - -;
+#X obj 128 384 routeOSC /data;
+#X msg 145 167 open 32;
+#X msg 173 189 close 32;
+#X obj 128 246 comport 32 115200;
+#X obj 467 884 dac~;
+#X obj 304 786 metro 50;
+#X obj 303 751 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 305 880 tabwrite~ out;
+#X obj 473 817 *~;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array out 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 362 180 graph;
+#X obj 774 850 hsl 128 15 0 0.5 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X floatatom 797 908 5 0 0 0 - - -;
+#X msg 768 782 0;
+#X text 809 785 mute;
+#X text 826 824 volume;
+#X floatatom 457 502 5 0 0 0 - - -;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array out2 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1 0 0;
+#X restore 655 182 graph;
+#X obj 431 455 / 120000;
+#X obj 278 654 hsl 128 15 110 660 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 5700 1;
+#X obj 472 618 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 548 599 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 537 490 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 2500 1;
+#X obj 456 552 moses \$2;
+#X obj 656 789 vline~;
+#X obj 440 747 osc~;
+#X msg 485 697 330;
+#X msg 436 672 392;
+#X text 561 466 sensivity;
+#X text 312 630 frequency;
+#X text 606 703 envelope;
+#X msg 563 724 0.6 10 \, 0 500 20;
+#X connect 0 0 8 0;
+#X connect 2 0 3 0;
+#X connect 3 0 5 0;
+#X connect 4 0 22 0;
+#X connect 5 0 4 0;
+#X connect 6 0 8 0;
+#X connect 7 0 8 0;
+#X connect 8 0 2 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 12 0;
+#X connect 13 0 9 0;
+#X connect 13 0 9 1;
+#X connect 15 0 16 0;
+#X connect 15 0 13 1;
+#X connect 17 0 15 0;
+#X connect 20 0 27 0;
+#X connect 22 0 20 0;
+#X connect 23 0 29 0;
+#X connect 25 0 35 0;
+#X connect 26 0 27 1;
+#X connect 27 0 24 0;
+#X connect 27 1 25 0;
+#X connect 28 0 13 1;
+#X connect 29 0 13 0;
+#X connect 30 0 29 0;
+#X connect 31 0 29 0;
+#X connect 35 0 28 0;
