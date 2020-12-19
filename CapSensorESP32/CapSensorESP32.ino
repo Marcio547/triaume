@@ -6,13 +6,14 @@
 #include <CapacitiveSensor.h>
 #include <OSCMessage.h>
 #include <SLIPEncodedSerial.h>
+#include <Ticker.h>
 
 #define SEND_PIN 13
 #define RECEIVE_PIN 12
 #define ACTIVATE_BUTTON 5
 #define LED_PIN 2
-#define SAMPLING_PERIOD 80000//period for each TimerOne interrupt (microsseconds)
-#define BAUD_RATE 115200
+#define SAMPLING_PERIOD 80000//period for each interrupt (microsseconds)
+#define BAUD_RATE 9600
 #define ESP32_PRESCALER 1
 
 #define RXD2 16 
@@ -24,22 +25,13 @@
 CapacitiveSensor   cs_4_2 = CapacitiveSensor(SEND_PIN, RECEIVE_PIN);
 SLIPEncodedSerial SLIPSerial(Serial); // For Sending OSC Messages Over Serial
 int ButtonStatus = 0;
-int SendFlag = 0;
+volatile int SendFlag = 0;
 int debounceTime = 0;
 long counter = 0;
 float num;
 
+Ticker t;
 hw_timer_t * timer = NULL;
-
-
-void start_timer()
-{
-  timer = timerBegin(0, 1, true);
-  timerAttachInterrupt(timer, &send_data, true);
-  timerAlarmWrite(timer, SAMPLING_PERIOD, true); 
-  timerAlarmEnable(timer);
-
-}
 
 void stop_timer(){
     timerEnd(timer);
@@ -48,65 +40,34 @@ void stop_timer(){
 
 void setup()
 {
-  //pin Configurations
-  pinMode(LED_PIN, OUTPUT);
-  pinMode(ACTIVATE_BUTTON, INPUT_PULLUP);
-
-
   Serial1.begin(BAUD_RATE, SERIAL_8N1, RXD2, TXD2);
 
-  //Periodic interrupt to activate send_data ISR routine
-  //Timer1.initialize(SAMPLING_PERIOD);
-  //Timer1.attachInterrupt(send_data);
-
-  //Button Interrupt
-  attachInterrupt(digitalPinToInterrupt(ACTIVATE_BUTTON), check_button, LOW);
-
-  start_timer();
+  //start_timer();
 
   //begin SLIPSerial just like Serial
-  //SLIPSerial.begin(BAUD_RATE);
+  SLIPSerial.begin(BAUD_RATE);
 
   digitalWrite(LED_PIN, LOW);
-  Serial.begin(BAUD_RATE);
+
+  t.attach(0.01,&send_data);
 }
-
-
 
 void send_data() {
-  //Serial.println("Flag Status: " + String(SendFlag));
   SendFlag = 1;
-  //Serial.println(500);
-  
-
-
 }
-
-
-void check_button() {
- stop_timer();
-}
-
 
 void loop()
 {
-   
-    if (SendFlag) {
-     
+  if (SendFlag) {
+    SendFlag = 0;
     OSCMessage msg("/data");
     //long start = millis();  //check performance time
-    long total1 =  cs_4_2.capacitiveSensor(1000);
-    //Serial.println(millis() - start); //check performance time
-    //Serial1.println(total1/1000); //check data using Serial Plotter, if desired.
-    //Serial1.println(3);
-    //Send OSC message
-    num = total1;
-    msg.add(num);
+    float total1 =  cs_4_2.capacitiveSensor(1000);
+
+    msg.add(total1);
     SLIPSerial.beginPacket();
     msg.send(SLIPSerial);
     SLIPSerial.endPacket();
-    SendFlag = 0;
-
-
+    msg.empty();
   }
 }
