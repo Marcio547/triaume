@@ -6,6 +6,9 @@ CapacitiveSensor touchSwitch = CapacitiveSensor(22,20);
 #define LED_PIN A5 //LED turns on indicating correct sensivitiy
 
 
+//formula conversao frequencia em MIDI
+//f = 440 * 2^(m-69)/12
+
 
 void setup()
 {
@@ -18,7 +21,8 @@ void loop()
  //code form CapacitiveSensor Library.
  long start = millis();
  long val = touchSwitch.capacitiveSensor(30);
-
+ int intVal = (int) val;
+ char test = char (val);
 //val > 800 closed hand
 //turns LED on with closed hand holding triangle
 if (val > 800) {
@@ -30,5 +34,6 @@ if (val > 800) {
     
     digitalWrite(LED_PIN, LOW);
  }
+ //Serial.println(val/64);
  Serial.write(val);
 }
