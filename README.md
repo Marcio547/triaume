@@ -22,6 +22,6 @@ On its most recent version, the following materials were used:
 
 - Alligator clips and jumper cables.
 
-- Insultaging tape
+- Insulating tape
 
 - Copper adhesive tape
