@@ -1,4 +1,4 @@
-#N canvas 0 87 1600 764 12;
+#N canvas 1600 60 1920 1020 12;
 #X msg 13 -609 devices;
 #X text 13 -677 Patch Created for PD Vanilla. Add import mrpeach object
 if using purr-data or pd-extended;
@@ -24,20 +24,33 @@ if using purr-data or pd-extended;
 #X msg 1106 -347 0;
 #X text 1106 -368 mute;
 #X text 1097 -167 volume;
-#X floatatom 337 -574 5 0 0 0 - - -;
+#X floatatom 342 -560 5 0 0 0 - - -;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array out2 100 float 3;
-#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-0;
+#A 0 1.62001e-09 1.6149e-09 1.60955e-09 1.60395e-09 1.59811e-09 1.592e-09
+1.58564e-09 1.579e-09 1.57208e-09 1.56487e-09 1.55736e-09 1.54954e-09
+1.5414e-09 1.53293e-09 1.52413e-09 1.51499e-09 1.5055e-09 1.49565e-09
+1.48546e-09 1.4749e-09 1.46399e-09 1.45271e-09 1.44108e-09 1.42908e-09
+1.41673e-09 1.40404e-09 1.39099e-09 1.3776e-09 1.36388e-09 1.34983e-09
+1.33547e-09 1.32079e-09 1.30581e-09 1.29054e-09 1.27499e-09 1.25918e-09
+1.24311e-09 1.2268e-09 1.21026e-09 1.19352e-09 1.17658e-09 1.15946e-09
+1.14217e-09 1.12475e-09 1.10719e-09 1.08951e-09 1.07174e-09 1.05389e-09
+1.03597e-09 1.01799e-09 9.99968e-10 9.81913e-10 9.63834e-10 9.45736e-10
+9.27626e-10 9.09507e-10 8.91378e-10 8.7324e-10 8.55088e-10 8.36921e-10
+8.18729e-10 8.00507e-10 7.82245e-10 7.63935e-10 7.45565e-10 7.27126e-10
+7.08606e-10 6.89997e-10 6.71291e-10 6.52479e-10 6.33554e-10 6.14514e-10
+5.95352e-10 5.76071e-10 5.56672e-10 5.37158e-10 5.17538e-10 4.9782e-10
+4.78016e-10 4.5814e-10 4.38209e-10 4.18242e-10 3.98258e-10 3.78281e-10
+3.58335e-10 3.38443e-10 3.18633e-10 2.98929e-10 2.79359e-10 2.59948e-10
+2.40723e-10 2.21708e-10 2.02927e-10 1.84404e-10 1.66158e-10 1.48211e-10
+1.30581e-10 1.1328e-10 9.63265e-11 7.97287e-11;
 #X coords 0 1 100 -1 200 140 1 0 0;
 #X restore 216 -115 graph;
 #X obj 284 -621 / 120000;
 #X obj 1478 -331 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 1172 -484 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5650 1;
+-1 -1 2839 1;
 #X obj 1350 -450 moses \$2;
 #X obj 1286 -32 vline~;
 #X text 1181 -508 sensivity;
@@ -100,24 +113,24 @@ if using purr-data or pd-extended;
 #X floatatom 635 -510 5 0 0 0 - - -;
 #X obj 692 -706 udpreceive 54321;
 #X obj 691 -680 oscparse;
-#X obj 761 -681 list trim;
+#X obj 798 -665 list trim;
 #X obj 498 -589 hsl 128 15 21 108 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 6359 1;
+-262144 -1 -1 4233 1;
 #X obj 494 -617 + 21;
 #X obj 493 -645 route frequency;
 #X floatatom 613 -645 5 0 0 0 - - -;
-#X obj 883 -505 route wet dry roomsize volume, f 17;
+#X obj 917 -504 route wet dry roomsize volume, f 17;
 #X obj 1074 -656 route trigger sensivity;
-#X obj 663 -583 route square triangle sine noise;
-#X obj 1152 -364 route at_volume attack_sp sustain decay;
+#X obj 635 -575 route square triangle sine noise;
+#X obj 1171 -354 route at_volume attack_sp sustain decay;
 #X obj 1207 -314 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6595 1;
+-1 -1 4601 1;
 #X obj 1276 -314 vsl 15 128 0 1000 0 0 empty empty empty 0 -9 0 10
--262144 -1 -1 7 1;
-#X obj 1358 -313 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 70 1;
+-262144 -1 -1 3975 1;
+#X obj 1358 -313 vsl 15 128 0 500 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 3861 1;
 #X obj 1436 -315 vsl 15 128 0 500 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 18 1;
+-1 -1 5334 1;
 #X text 1298 -282 sustain;
 #X text 1388 -284 decay;
 #X floatatom 1230 -313 5 0 0 0 - - -;
@@ -125,23 +138,23 @@ if using purr-data or pd-extended;
 #X floatatom 1389 -310 5 0 0 0 - - -;
 #X floatatom 1165 -313 5 0 0 0 - - -;
 #X obj 453 -441 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 9057 1;
 #X obj 835 -439 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 9500 1;
+-1 -1 2768 1;
 #X obj 703 -440 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 11200 1;
+-1 -1 11504 1;
 #X obj 589 -441 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5800 1;
+-1 -1 1767 1;
 #X text 769 -344 noise amount, f 7;
 #X text 666 -380 SINE WAVE, f 4;
 #X obj 884 -439 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 4739 1;
+-1 -1 8048 1;
 #X obj 973 -443 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5767 1;
+-1 -1 12363 1;
 #X obj 926 -441 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 6979 1;
+-1 -1 7530 1;
 #X obj 1074 -329 vsl 15 128 0 0.75 0 0 empty empty empty 0 -9 0 10
--262144 -1 -1 5200 1;
+-262144 -1 -1 3203 1;
 #X floatatom 1100 -189 5 0 0 0 - - -;
 #X obj 362 -405 square_wave;
 #X obj 481 -404 triangle_wave;
