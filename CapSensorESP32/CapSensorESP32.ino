@@ -13,7 +13,7 @@
 #define ACTIVATE_BUTTON 5
 #define LED_PIN 2
 #define SAMPLING_PERIOD 80000//period for each interrupt (microsseconds)
-#define BAUD_RATE 9600
+#define BAUD_RATE 115200
 #define ESP32_PRESCALER 1
 
 #define RXD2 16 
@@ -49,7 +49,7 @@ void setup()
 
   digitalWrite(LED_PIN, LOW);
 
-  t.attach(0.01,&send_data);
+  t.attach(0.001,&send_data);
 }
 
 void send_data() {
@@ -62,7 +62,7 @@ void loop()
     SendFlag = 0;
     OSCMessage msg("/data");
     //long start = millis();  //check performance time
-    float total1 =  cs_4_2.capacitiveSensor(1000);
+    float total1 =  cs_4_2.capacitiveSensor(200);
 
     msg.add(total1);
     SLIPSerial.beginPacket();
