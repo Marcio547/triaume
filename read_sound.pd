@@ -1,0 +1,35 @@
+#N canvas 2722 301 592 578 12;
+#X obj 181 406 readsf~;
+#X msg 438 349 1;
+#X obj 363 113 inlet;
+#X obj 181 445 outlet~;
+#X msg 31 256 open soundfile.wav;
+#X msg 419 238 open hihat.wav;
+#X msg 199 264 open zabumba.wav;
+#X obj 228 151 demux 0 1 2;
+#X obj 176 112 inlet;
+#X obj 144 205 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 240 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 327 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 7 1;
+#X connect 4 0 1 0;
+#X connect 4 0 0 0;
+#X connect 5 0 1 0;
+#X connect 5 0 0 0;
+#X connect 6 0 1 0;
+#X connect 6 0 0 0;
+#X connect 7 0 9 0;
+#X connect 7 1 10 0;
+#X connect 7 2 11 0;
+#X connect 8 0 7 0;
+#X connect 9 0 4 0;
+#X connect 9 0 1 0;
+#X connect 10 0 6 0;
+#X connect 10 0 1 0;
+#X connect 11 0 5 0;
+#X connect 11 0 1 0;
