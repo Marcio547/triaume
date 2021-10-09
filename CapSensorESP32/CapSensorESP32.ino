@@ -20,10 +20,9 @@
 #define RXD2 16 
 #define TXD2 17
 
-// Send Pin: 4
-// Receive Pin: 2
+
 // The Sensor Pin is where the wire is attached to the triangle
-CapacitiveSensor   cs_4_2 = CapacitiveSensor(SEND_PIN, RECEIVE_PIN);
+CapacitiveSensor   cap_sensor = CapacitiveSensor(SEND_PIN, RECEIVE_PIN);
 SLIPEncodedSerial SLIPSerial(Serial); // For Sending OSC Messages Over Serial
 int ButtonStatus = 0;
 volatile int SendFlag = 0;
@@ -100,7 +99,7 @@ void loop()
     SendFlag = 0;
     OSCMessage msg("/data");
     //long start = millis();  //check performance time
-    float total1 =  cs_4_2.capacitiveSensor(50);
+    float total1 =  cap_sensor.capacitiveSensor(50);
     msg.add(total1);
 #if WIFIMODE == 1
     Udp.beginPacket(outIp, 9005);
