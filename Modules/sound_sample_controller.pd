@@ -1,0 +1,45 @@
+#N canvas 2310 69 1031 567 12;
+#X obj 144 225 vradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
+-1 -1 2;
+#X text 84 222 hi-hat;
+#X text 84 238 zabumba;
+#X text 84 254 shaker;
+#X msg 188 186 0;
+#X msg 228 187 1;
+#X msg 266 188 2;
+#X text 71 282 no sample;
+#X msg 302 189 3;
+#X obj 285 133 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 341 189 4;
+#X text 68 268 cowbells;
+#X obj 48 172 delay 60;
+#X obj 170 159 route hihat zabumba shaker cowbells nosample;
+#X text 35 31 SOUND SAMPLE CONTROLLER;
+#X obj 172 109 inlet;
+#X obj 48 65 inlet;
+#X text 218 108 input: MobMuPlat Control Signal (For Smartphone Control)
+;
+#X obj 46 317 read_sound;
+#X obj 45 364 outlet~;
+#X text 113 62 input: trigger from touch or release;
+#X obj 73 111 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X connect 0 0 18 1;
+#X connect 4 0 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 8 0 0 0;
+#X connect 10 0 0 0;
+#X connect 12 0 0 0;
+#X connect 12 0 18 0;
+#X connect 13 0 4 0;
+#X connect 13 1 5 0;
+#X connect 13 2 6 0;
+#X connect 13 3 8 0;
+#X connect 13 4 10 0;
+#X connect 15 0 13 0;
+#X connect 15 0 9 0;
+#X connect 16 0 12 0;
+#X connect 16 0 21 0;
+#X connect 18 0 19 0;

@@ -1,0 +1,54 @@
+#N canvas 505 269 903 578 12;
+#X obj 203 492 readsf~;
+#X msg 438 349 1;
+#X obj 363 113 inlet;
+#X obj 203 531 outlet~;
+#X msg 199 264 open zabumba.wav;
+#X obj 176 112 inlet;
+#X obj 144 205 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 240 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 327 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 31 256 open hihat.wav;
+#X msg 419 238 open shaker.wav;
+#X obj 518 175 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 592 216 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 601 320 5 0 0 0 - - -;
+#X obj 619 261 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 225 151 demux 0 1 2 3 4;
+#X obj 603 345 route 0 1;
+#X msg 507 394 open cowbell1.wav;
+#X msg 654 394 open cowbell2.wav;
+#X obj 528 299 delay 10;
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 15 1;
+#X connect 4 0 0 0;
+#X connect 5 0 15 0;
+#X connect 6 0 9 0;
+#X connect 6 0 1 0;
+#X connect 7 0 4 0;
+#X connect 7 0 1 0;
+#X connect 8 0 10 0;
+#X connect 8 0 1 0;
+#X connect 9 0 0 0;
+#X connect 10 0 0 0;
+#X connect 12 0 14 0;
+#X connect 12 0 19 0;
+#X connect 13 0 16 0;
+#X connect 14 0 13 0;
+#X connect 15 0 6 0;
+#X connect 15 1 7 0;
+#X connect 15 2 8 0;
+#X connect 15 3 12 0;
+#X connect 15 4 11 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 17 0 0 0;
+#X connect 18 0 0 0;
+#X connect 19 0 1 0;

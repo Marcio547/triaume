@@ -1,0 +1,14 @@
+#N canvas 0 276 800 756 12;
+#X obj 68 109 udpreceive 54321;
+#X obj 68 147 oscparse;
+#X obj 68 180 list trim;
+#X obj 90 212 print \$1;
+#X obj 68 256 outlet;
+#X text 28 26 MobMuPlat OSC Receiver;
+#X text 30 57 Using port 54321 for receiving OSC messages from MobMuPlat
+app.;
+#X text 159 202 Received messages can be seen in Pd logger.;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 2 0 3 0;

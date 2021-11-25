@@ -1,0 +1,109 @@
+#N canvas 1992 224 1437 741 12;
+#X obj 433 276 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 429 295 metro 50;
+#X obj 356 276 snapshot~;
+#X floatatom 355 304 5 0 0 0 - - -;
+#X floatatom 354 387 5 0 0 0 - - -;
+#X obj 354 358 + 150;
+#X obj 354 333 * 1000;
+#X floatatom 260 335 5 0 0 0 - - -;
+#X obj 369 213 lop~ 0.8;
+#X obj 371 246 s~ lop_out;
+#X obj 442 322 r~ lop_out;
+#X obj 442 186 r cutoff;
+#X obj 97 241 vsl 15 128 0.1 1.5 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 49 300 5 0 0 0 - - -;
+#X text 120 231 low pass cut-off freq., f 10;
+#X obj 78 387 s cutoff;
+#X obj 43 253 * 1.5;
+#X obj 43 165 route cutoff;
+#X obj 43 102 inlet;
+#X obj 76 138 s MMP;
+#X obj 209 188 inlet;
+#X obj 430 356 tabwrite~ filtered;
+#X floatatom 209 220 5 0 0 0 - - -;
+#X text 90 100 input: MobMuPlat Control Signal (For Smartphone Control)
+;
+#X text 40 25 Continuous Parameter Control Using PWM-like signal;
+#X text 40 46 And FM Synth Module;
+#X text 176 159 Frequency Input;
+#X obj 369 152 inlet~;
+#X obj 278 213 s in;
+#X obj 260 304 * 0.5;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array fm 100 float 3;
+#A 0 -0.314273 -0.405063 -0.466038 -0.496092 -0.496397 -0.469923 -0.420796
+-0.353812 -0.273939 -0.186008 -0.094407 -0.00295634 0.0851936 0.167565
+0.242322 0.308215 0.364481 0.410777 0.447077 0.473586 0.490693 0.498892
+0.498707 0.490731 0.47552 0.453614 0.425527 0.391709 0.352625 0.30868
+0.260281 0.207849 0.151815 0.0926785 0.0310122 -0.0325094 -0.0970745
+-0.161706 -0.225249 -0.286332 -0.343378 -0.394596 -0.438 -0.471452
+-0.492771 -0.49979 -0.490532 -0.463387 -0.417328 -0.352158 -0.268741
+-0.169254 -0.0573453 0.0617611 0.181332 0.293361 0.389004 0.459301
+0.496025 0.4928 0.446225 0.356853 0.230027 0.0760938 -0.0899388 -0.24961
+-0.38297 -0.471202 -0.499652 -0.460663 -0.355877 -0.197182 -0.00607115
+0.188846 0.356074 0.466558 0.49921 0.445562 0.31244 0.121725 -0.0928101
+-0.29149 -0.436306 -0.498625 -0.465317 -0.3419 -0.151848 0.0679131
+0.2744 0.427318 0.497209 0.47125 0.355504 0.173234 -0.0402262 -0.244772
+-0.403407 -0.489023 -0.488772 -0.405504;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 401 537 graph;
+#X obj 213 597 outlet~;
+#X obj 110 638 metro 50;
+#X obj 110 613 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 111 667 tabwrite~ fm;
+#X obj 211 522 *~;
+#X obj 206 453 osc~;
+#X obj 207 419 +~;
+#X obj 209 254 osc~;
+#X obj 207 381 *~;
+#X floatatom 269 383 5 0 0 0 - - -;
+#X obj 254 531 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 253 499 route pwmsynth;
+#X obj 262 475 r MMP;
+#X obj 212 559 *~;
+#X obj 416 484 mic_in;
+#X text 406 422 optional: connect this object (mic_in) to use the triangle
+sound to control additional parameters as an experimentation.;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 21 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 3 0 29 0;
+#X connect 4 0 40 0;
+#X connect 5 0 4 0;
+#X connect 6 0 5 0;
+#X connect 7 0 35 1;
+#X connect 8 0 2 0;
+#X connect 8 0 9 0;
+#X connect 10 0 21 0;
+#X connect 11 0 8 1;
+#X connect 12 0 15 0;
+#X connect 12 0 13 0;
+#X connect 16 0 12 0;
+#X connect 17 0 16 0;
+#X connect 18 0 17 0;
+#X connect 18 0 19 0;
+#X connect 20 0 22 0;
+#X connect 20 0 28 0;
+#X connect 22 0 38 0;
+#X connect 27 0 8 0;
+#X connect 29 0 7 0;
+#X connect 32 0 34 0;
+#X connect 33 0 32 0;
+#X connect 35 0 34 0;
+#X connect 35 0 44 0;
+#X connect 36 0 35 0;
+#X connect 37 0 36 0;
+#X connect 38 0 39 0;
+#X connect 39 0 37 0;
+#X connect 40 0 39 1;
+#X connect 41 0 44 1;
+#X connect 42 0 41 0;
+#X connect 43 0 42 0;
+#X connect 44 0 31 0;

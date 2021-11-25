@@ -1,0 +1,168 @@
+#N canvas 1600 69 1920 1011 12;
+#X obj 275 92 MMP_receiver;
+#X obj 46 231 calibrate_trigctl;
+#X obj 541 401 reverb_control;
+#X obj 114 378 adsr_controller;
+#X obj 46 98 OSC_receiver;
+#X floatatom 46 138 5 0 0 0 - - -;
+#X floatatom 127 126 5 0 0 0 - - -;
+#X text 167 125 sample rate;
+#X text 56 159 sensor data;
+#X obj 123 478 sound_sample_controller, f 12;
+#X obj 165 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 105 273 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 37 8 TRIAUME - AN AUGMENTED TRIANGLE;
+#X obj 275 121 s MobMuPlat;
+#X obj 162 197 r MobMuPlat;
+#X obj 217 351 r MobMuPlat;
+#X obj 204 442 r MobMuPlat;
+#X obj 178 753 metro 50;
+#X obj 178 728 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 178 782 tabwrite~ out;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array out 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1;
+#X restore 555 469 graph;
+#X obj 46 709 *~ 0.75, f 9;
+#X obj 124 678 r vol_ctl;
+#X msg 436 594 0;
+#X text 438 615 mute;
+#X obj 407 576 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 763 1;
+#X floatatom 407 729 5 0 0 0 - - -;
+#X obj 407 757 s vol_ctl;
+#X msg 437 567 0.005;
+#X obj 407 533 route volume;
+#X obj 407 505 r MobMuPlat;
+#X obj 22 271 s~ sig_out, f 7;
+#X obj 43 781 s~ sound_output;
+#X obj 28 482 wave_synth;
+#X obj 28 344 r MobMuPlat;
+#X text 123 269 ON;
+#X text 183 270 OFF;
+#X obj 106 302 s on;
+#X obj 165 302 s off;
+#X obj 114 345 r on;
+#X obj 123 444 r off;
+#X obj 334 380 pwm_like_synth, f 16;
+#X obj 541 370 r MobMuPlat;
+#X obj 667 355 r~ sound_output;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array reverb_out 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1 0 0;
+#X restore 768 471 graph;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array pulse 100 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X coords 0 1 100 -1 200 140 1 0 0;
+#X restore 555 631 graph;
+#X obj 719 419 dac~;
+#X obj 98 545 s~ pre out;
+#X obj 47 627 r~ pre out;
+#X text 381 476 MAIN VOLUME CONTROL;
+#N canvas 0 50 450 250 (subpatch) 0;
+#X array filtered 1000 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 1000 -1 200 140 1 0 0;
+#X restore 769 631 graph;
+#X floatatom 29 533 5 0 0 0 - - -;
+#X obj 29 559 s freq;
+#X obj 334 321 r MobMuPlat;
+#X obj 388 347 r freq;
+#X obj 451 322 r~ sig_out;
+#X obj 335 420 s~ pwm_synth_out;
+#X obj 78 652 r~ pwm_synth_out;
+#X text 51 601 PRE SOUND OUTPUT LIMITER;
+#X text 37 73 OSC DATA RECEIVER;
+#X text 757 417 SOUND OUTPUT;
+#X text 530 420 REVERB CONTROLLER;
+#X text 125 517 PERCUSSIVE SAMPLES CONTROLLER;
+#X text 122 401 ADSR ENVELOPE CONTROLLER;
+#X text 14 441 WAVE SYNTH CONTROLLER, f 11;
+#X text 179 224 SENSOR CALIBRATION AND TRIGGER CONTROLLER, f 24;
+#X text 344 296 PWM-LIKE CONTROLLER;
+#X text 291 53 MOBMUPLAT CONTROL SIGNAL RECEIVER, f 21;
+#X connect 0 0 13 0;
+#X connect 1 0 31 0;
+#X connect 1 1 11 0;
+#X connect 1 2 10 0;
+#X connect 3 0 33 1;
+#X connect 4 0 5 0;
+#X connect 4 1 6 0;
+#X connect 5 0 1 0;
+#X connect 9 0 47 0;
+#X connect 10 0 38 0;
+#X connect 11 0 37 0;
+#X connect 14 0 1 1;
+#X connect 15 0 3 1;
+#X connect 16 0 9 1;
+#X connect 17 0 19 0;
+#X connect 18 0 17 0;
+#X connect 21 0 19 0;
+#X connect 21 0 32 0;
+#X connect 22 0 21 1;
+#X connect 23 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
+#X connect 28 0 25 0;
+#X connect 29 0 25 0;
+#X connect 30 0 29 0;
+#X connect 33 0 51 0;
+#X connect 33 1 47 0;
+#X connect 34 0 33 0;
+#X connect 39 0 3 0;
+#X connect 40 0 9 0;
+#X connect 41 0 56 0;
+#X connect 42 0 2 0;
+#X connect 43 0 2 1;
+#X connect 43 0 46 0;
+#X connect 43 0 46 1;
+#X connect 48 0 21 0;
+#X connect 51 0 52 0;
+#X connect 53 0 41 0;
+#X connect 54 0 41 1;
+#X connect 55 0 41 2;
+#X connect 57 0 21 0;

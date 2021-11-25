@@ -1,0 +1,83 @@
+#N canvas 200 344 1200 647 12;
+#X text 172 98 frequency;
+#X obj 451 293 noise~;
+#X obj 276 456 +~;
+#X obj 348 362 osc~;
+#X obj 174 418 *~;
+#X obj 450 416 *~;
+#X obj 347 418 *~;
+#X obj 70 148 mtof;
+#X floatatom 69 177 5 0 0 0 - - -;
+#X obj 78 125 hsl 128 15 21 108 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 3211 1;
+#X obj 77 101 + 21;
+#X obj 77 73 route frequency;
+#X floatatom 128 100 5 0 0 0 - - -;
+#X obj 281 83 route square triangle sine noise;
+#X obj 146 254 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 1990 1;
+#X obj 528 256 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 396 255 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 544 1;
+#X obj 282 254 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 462 1;
+#X text 462 351 noise amount, f 7;
+#X obj 57 346 square_wave;
+#X obj 177 343 triangle_wave;
+#X obj 450 318 hip~ \$1;
+#X obj 137 539 *~;
+#X obj 57 280 r osc_freq;
+#X obj 178 273 r osc_freq;
+#X floatatom 177 306 5 0 0 0 - - -;
+#X obj 316 292 r osc_freq;
+#X floatatom 316 318 5 0 0 0 - - -;
+#X text 317 267 SINE WAVE;
+#X obj 136 565 outlet~;
+#X text 216 523 output: wave signal for being used on final synthesis
+;
+#X obj 237 19 inlet;
+#X text 286 18 input: MobMuPlat Control Signal (For Smartphone Control)
+;
+#X floatatom 57 316 5 0 0 0 - - -;
+#X obj 68 399 *~;
+#X obj 560 138 s~ from_adsr;
+#X obj 217 425 r~ from_adsr;
+#X obj 560 108 inlet~;
+#X obj 62 211 outlet;
+#X text 25 230 output: frequency value;
+#X connect 1 0 21 0;
+#X connect 2 0 22 0;
+#X connect 3 0 6 0;
+#X connect 4 0 22 0;
+#X connect 5 0 2 1;
+#X connect 6 0 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 38 0;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 11 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 14 0;
+#X connect 13 1 17 0;
+#X connect 13 2 16 0;
+#X connect 13 3 15 0;
+#X connect 14 0 34 1;
+#X connect 15 0 5 1;
+#X connect 16 0 6 1;
+#X connect 17 0 4 1;
+#X connect 19 0 34 0;
+#X connect 20 0 4 0;
+#X connect 21 0 5 0;
+#X connect 22 0 29 0;
+#X connect 23 0 33 0;
+#X connect 24 0 25 0;
+#X connect 25 0 20 0;
+#X connect 26 0 27 0;
+#X connect 27 0 3 0;
+#X connect 31 0 11 0;
+#X connect 31 0 13 0;
+#X connect 33 0 19 0;
+#X connect 34 0 22 0;
+#X connect 36 0 22 1;
+#X connect 37 0 35 0;

@@ -1,0 +1,83 @@
+#N canvas 496 276 743 720 12;
+#X text 30 39 SENSOR CALIBRATION;
+#X text 177 38 This module prepares sensor data for being used as a
+logic value (0 or 1).;
+#X text 43 73 It also aids on the selecion of a trigger mechanism (touch
+or release) \, sending a banging after that the cablirated sensor value
+exceeds a certain threshold.;
+#X obj 41 136 inlet;
+#X text 82 134 input: raw sensor data;
+#X floatatom 41 219 5 0 0 0 - - -;
+#X obj 264 152 inlet;
+#X text 312 150 input: MobMuPlat Control Signal (For Smartphone Control)
+;
+#X obj 318 181 route trigger sensitivity;
+#X obj 194 218 hradio 15 1 0 2 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X floatatom 312 305 5 0 0 0 - - -;
+#X obj 313 329 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 50 350 5 0 0 0 - - -;
+#X obj 41 246 demux 0 1;
+#X floatatom 142 362 5 0 0 0 - - -;
+#X obj 32 395 moses \$2;
+#X obj 139 399 moses \$2;
+#X msg 28 465 1;
+#X msg 155 497 0;
+#X floatatom 47 536 5 0 0 0 - - -;
+#X obj 47 565 sig~;
+#X obj 93 533 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 93 558 metro 50;
+#X obj 31 433 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 157 432 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 48 620 outlet~;
+#X floatatom 41 162 5 0 0 0 - - -;
+#X text 103 187 Calibration Factor;
+#X obj 89 503 outlet;
+#X obj 173 536 outlet;
+#X text 50 443 trigger on;
+#X text 175 449 trigger off;
+#X floatatom 390 402 5 0 0 0 - - -;
+#X text 244 215 0: touch trigger;
+#X text 248 232 1: release trigger;
+#X obj 459 247 vsl 15 128 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 8200 1;
+#X obj 74 595 tabwrite~ pulse;
+#X text 113 621 output: pulse signal for being filtered;
+#X obj 41 187 / 20000;
+#X connect 3 0 26 0;
+#X connect 5 0 13 0;
+#X connect 6 0 8 0;
+#X connect 8 0 9 0;
+#X connect 8 1 35 0;
+#X connect 9 0 10 0;
+#X connect 9 0 13 1;
+#X connect 10 0 11 0;
+#X connect 11 0 35 0;
+#X connect 12 0 15 0;
+#X connect 13 0 12 0;
+#X connect 13 1 14 0;
+#X connect 14 0 16 0;
+#X connect 15 0 24 0;
+#X connect 15 1 23 0;
+#X connect 16 0 23 0;
+#X connect 16 1 24 0;
+#X connect 17 0 19 0;
+#X connect 17 0 28 0;
+#X connect 18 0 19 0;
+#X connect 18 0 29 0;
+#X connect 19 0 20 0;
+#X connect 20 0 25 0;
+#X connect 20 0 36 0;
+#X connect 21 0 22 0;
+#X connect 22 0 36 0;
+#X connect 23 0 17 0;
+#X connect 24 0 18 0;
+#X connect 26 0 38 0;
+#X connect 35 0 15 1;
+#X connect 35 0 16 1;
+#X connect 35 0 32 0;
+#X connect 38 0 5 0;
