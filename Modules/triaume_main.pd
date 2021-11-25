@@ -1,4 +1,4 @@
-#N canvas 1600 69 1920 1011 12;
+#N canvas 0 276 1600 756 12;
 #X obj 358 92 MMP_receiver;
 #X obj 46 231 calibrate_trigctl;
 #X obj 541 401 reverb_control;
@@ -121,9 +121,8 @@
 #X restore 769 631 graph;
 #X floatatom 29 533 5 0 0 0 - - -;
 #X obj 334 321 r MobMuPlat;
-#X obj 451 322 r~ sig_out;
+#X obj 454 324 r~ sig_out;
 #X obj 335 420 s~ pwm_synth_out;
-#X obj 72 651 r~ pwm_synth_out;
 #X text 51 601 PRE SOUND OUTPUT LIMITER;
 #X text 36 54 OSC DATA RECEIVER;
 #X text 757 417 SOUND OUTPUT;
@@ -138,9 +137,10 @@
 #X text 77 152 sensor data;
 #X floatatom 164 97 5 0 0 0 - - -;
 #X text 202 96 latency(ms);
-#X obj 209 650 r~ pwm_synth_out2;
 #X obj 30 559 s osc_freq;
-#X obj 388 347 r osc_freq;
+#X obj 573 315 s~ pwm_synth_out3;
+#X obj 363 345 r osc_freq;
+#X obj 136 637 r~ pwm_synth_out;
 #X connect 0 0 11 0;
 #X connect 1 0 29 0;
 #X connect 1 1 9 0;
@@ -148,7 +148,7 @@
 #X connect 3 0 31 1;
 #X connect 4 0 5 0;
 #X connect 4 1 6 0;
-#X connect 4 2 66 0;
+#X connect 4 2 65 0;
 #X connect 5 0 1 0;
 #X connect 7 0 45 0;
 #X connect 8 0 36 0;
@@ -178,8 +178,8 @@
 #X connect 41 0 44 0;
 #X connect 41 0 44 1;
 #X connect 46 0 19 0;
-#X connect 49 0 69 0;
+#X connect 49 0 67 0;
 #X connect 50 0 39 0;
 #X connect 51 0 39 2;
-#X connect 53 0 19 0;
-#X connect 70 0 39 1;
+#X connect 69 0 39 1;
+#X connect 70 0 19 0;
