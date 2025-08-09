@@ -31,8 +31,8 @@ int debounceTime = 0;
 long counter = 0;
 float num;
 
-char ssid[] = "REPRISADORES";          // your network SSID (name)
-char pass[] = "@Rep2020";                    // your network password
+char ssid[] = "";          // your network SSID (name)
+char pass[] = "";                    // your network password
 
 WiFiUDP Udp;
 
